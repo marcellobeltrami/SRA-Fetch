@@ -20,6 +20,12 @@ nf run main.nf -params-file <path/to/params.yaml> -profile local
 
 **Note:** the pipeline has been tested with single project ids and multiple reads ids. It is possible that passing a list of projects could work, although it could result in unexpected behaviour.
 
+### Update modules
+
+This pipeline relies on a centralized file to manage SLURM dependencies. Modifying  commands in <configs/modules.nf> will allow to load relevant modules to relative processes. 
+This allows to use this pipeline on different HPCs managed by SLURM. 
+
+
 ## Dev Note
 
 Running the pipeline locally with stub is quite useful to test inputs and outputs and general syntax without major resource usage. 
@@ -31,5 +37,8 @@ nf run main.nf -params-file <path/to/params.yaml> -profile slurm -stub-run
 nf run main.nf -params-file <path/to/params.yaml> -profile local -stub-run
 
 ```
-
+### **TO DO**
+- [X] Implement SRA get and download 
+- [ ] Implement MultiQC
+- [ ] Test Trimming
 
