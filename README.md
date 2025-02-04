@@ -22,7 +22,7 @@ nf run main.nf -params-file <path/to/params.yaml> -profile local
 
 ### Update modules
 
-This pipeline relies on a centralized file to manage SLURM dependencies. Modifying  commands in ```bash configs/modules.nf ``` will allow to load relevant modules to relative processes. 
+This pipeline relies on a centralized file to manage SLURM dependencies. Modifying  commands in ```configs/modules.nf ``` will allow to load relevant modules to relative processes. 
 This allows to use this pipeline on different HPCs managed by SLURM. 
 
 
