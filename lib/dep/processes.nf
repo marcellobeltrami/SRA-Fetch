@@ -35,8 +35,6 @@ process DownLoadReads {
             error "Unexpected number of reads: ${reads.size()}"
         }
     
-
-
     stub:
     """
     
