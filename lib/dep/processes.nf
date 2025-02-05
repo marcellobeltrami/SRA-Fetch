@@ -138,6 +138,36 @@ process MultiQC {
 }
 
 
+// Carries out MultiQC
+process MultiQCTrim {
+    label "QC"
+    publishDir "${params.output}", mode: 'copy'  
+    
+    input:
+        path '*' // Collected list of tuples from Metrics of processes ->  multiqc_files = [file1.zip, file1.html, file2.zip, file.json, file2.html]
+
+    output:
+        path "multiqc_report_trimmed.html"
+
+    script:
+        // Flatten the list to get all FastQC output files
+        """
+        $purge
+        $multiqc
+        
+        multiqc . -o .
+        mv multiqc_report.html multiqc_report_trimmed.html
+        
+        """
+
+    stub:
+        """
+        touch multiqc_report_trimmed.html
+        """
+}
+
+
+
 // Carries out trimming for single and paired end reads.
 process Trim{
     label 'trimming'

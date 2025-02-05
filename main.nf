@@ -9,7 +9,7 @@
 
 */
 
-include {DownLoadReads; FastQC as FastQCRaw;FastQC as FastQCTrim ; Trim; MultiQC} from './lib/dep/processes.nf'
+include {DownLoadReads; FastQC as FastQCRaw;FastQC as FastQCTrim ; Trim; MultiQC; MultiQCTrim} from './lib/dep/processes.nf'
 include {getSRAEntries} from './lib/dep/misc.nf'
 
 
@@ -24,21 +24,16 @@ workflow{
     
     FastQC_out = FastQCRaw(Reads_ch.reads_tuple)
 
+    MultiQC(FastQC_out.results.collect())
+
     // Checks if reads should be trimmed directly.
     if (params.trimmed == true){
         Trimmed_reads = Trim(Reads_ch.reads_tuple)
         FastQC_out_trim = FastQCTrim(Trimmed_reads.trimmed_tuple)
 
-        QC_merged = FastQC_out.results.concat(FastQC_out_trim.results)
-        MultiQC(QC_merged.collect())
+        MultiQCTrim(FastQC_out_trim.results.collect())
 
-    } else {
-        
-        MultiQC(FastQC_out.results.collect())
-
-    }
-
-
+    } 
 
 
 }
