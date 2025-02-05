@@ -1,5 +1,5 @@
 id_list: ['ERR908507', 'ERR908506']
 project_name: null # ERP009109 #NCBI project id, downloads all reads related to a project
-ncbi_api_key: <your NCBI API key from https://support.nlm.nih.gov/kbArticle/?pn=KA-05317> 
-output: "./output" 
+ncbi_api_key: <your NCBI API key > # Instructions to get it: from https://support.nlm.nih.gov/kbArticle/?pn=KA-05317  
+output: "./output" # Output directory
 trimming: false # Toggle to true if you would like to trim your reads. Both trimmed and raw are outputted.

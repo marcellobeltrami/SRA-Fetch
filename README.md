@@ -26,7 +26,13 @@ This pipeline relies on a centralized file to manage SLURM dependencies. Modifyi
 This allows to use this pipeline on different HPCs managed by SLURM. 
 
 
-## Dev Note
+## Dev Notes
+
+**TO DO**
+- [X] Implement SRA get and download 
+- [X] Implement MultiQC
+- [X] Test Trimming
+- [ ] Fix stub: actual pipeline works, but testing with stub throws weird error.
 
 Running the pipeline locally with stub is quite useful to test inputs and outputs and general syntax without major resource usage. 
 
@@ -37,8 +43,3 @@ nf run main.nf -params-file <path/to/params.yaml> -profile slurm -stub-run
 nf run main.nf -params-file <path/to/params.yaml> -profile local -stub-run
 
 ```
-### **TO DO**
-- [X] Implement SRA get and download 
-- [ ] Implement MultiQC
-- [ ] Test Trimming
-

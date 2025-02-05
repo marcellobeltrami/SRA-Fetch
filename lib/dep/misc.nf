@@ -11,7 +11,7 @@ def getSRAEntries(){
 
         return SRA_channel
 
-    } if (params.project_name != null){
+    } else if (params.project_name != null){
         
         SRA_channel = channel.fromSRA(params.project_name, 
                                       apiKey:params.ncbi_api_key, 
